@@ -1,5 +1,12 @@
 import { Geist, Geist_Mono } from "next/font/google";
+import { Qwitcher_Grypen } from 'next/font/google';
 import "./globals.css";
+
+const qwitcher = Qwitcher_Grypen({
+  weight: ['400', '700'], // Choose the weights you need
+  subsets: ['latin'],
+  variable: '--font-qwitcher', // This creates a CSS variable
+});
 
 const geistSans = Geist({
   variable: "--font-geist-sans",
@@ -23,15 +30,6 @@ export default function RootLayout({ children }) {
       className={`${geistSans.variable} ${geistMono.variable} h-full antialiased`}
     >
       <body>
-
-        <nav className="navbar">
-        <a href="/">Home</a>
-        <a href="/about">About</a>
-        <a href="/portfolio">Portfolio</a>
-        <a href="/blog">Blog</a>
-        <div>|</div>
-        <a href="/contact">Contact</a>
-      </nav>
       {children}</body>
     </html >
   );

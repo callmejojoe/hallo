@@ -1,9 +1,16 @@
 @import "tailwindcss";
 
+/* Base Reset & Typography */
 :root {
+    /* Vintage Paper Off-White Palette */
+    --paper-bg: #F2EFE9; /* Warm off-white */
+    --paper-text: #1a1a1a;
+    --accent-black: #111;
+}
+/* :root {
   --background: #f9f7f0;
   --foreground: #0a032e;
-}
+} */
 
 @theme inline {
   --color-background: var(--background);
@@ -19,16 +26,339 @@
   }
 }
 
-body {
+/* body {
   background: var(--background);
   color: var(--foreground);
   font-family: Arial, Helvetica, sans-serif;
+} */
+
+
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
 }
 
+body, html {
+    width: 100%;
+    height: 100%;
+    font-family: 'Montserrat', sans-serif;
+    background-color: #1a1a1a;
+    /* On desktop we hide scroll, on mobile we will enable it */
+    overflow: hidden; 
+}
+
+.hero-wrapper {
+    position: relative;
+    width: 100vw;
+    height: 100vh;
+}
+
+/* --- Right Side: Character Image & Parallax --- */
+.character-bg {
+    position: absolute;
+    top: -2%;
+    right: -14%;
+    width: 85%;
+    height: 105%; 
+    background-size: cover;
+    background-position: center top;
+    background-repeat: no-repeat;
+    z-index: 1;
+    transition: transform 0.1s ease-out;
+}
+
+/* --- Left Side: The "Cut" Effect --- */
+.paper-container {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 72%;
+    height: 100%;
+    z-index: 2;
+    filter: drop-shadow(15px 0px 25px rgba(0, 0, 0, 0.4));
+}
+
+.paper-clip {
+    width: 100%;
+    height: 100%;
+    background-color: var(--paper-bg);
+    /* background-image: url('../public/Texture_Paper2.jpg'); */
+    clip-path: polygon(0 0, 100% 0, 50% 100%, 0 100%);
+    padding: 3rem 4rem;
+    display: flex;
+    flex-direction: column;
+    position: relative;
+}
+
+/* --- Giant Background Watermark Text --- */
+.watermark {
+    position: absolute;
+    top: 20%;
+    left: 5%;
+    font-size: 14rem;
+    font-weight: 900;
+    /* Transparent fill with a thick outline */
+    color: transparent;
+    -webkit-text-stroke: 3px rgba(0, 0, 0, 0.08);
+    z-index: -1;
+    pointer-events: none;
+}
+
+/* --- Navigation --- */
 .navbar {
-  display: flex;
-  width: fit-content;
-  gap: 1rem;
-  background-color: #ffdebb;
-  /* background-color: var(--background); */
+    position: sticky;
+    top: 0;
+    display: flex;
+    align-items: center;
+    gap: 2rem;
+    font-size: 0.85rem;
+    font-weight: 700;
+    margin-bottom: 6rem;
+    background-color: var(--paper-bg);
+}
+
+.navbar a {
+    text-decoration: none;
+    color: var(--paper-text);
+    letter-spacing: 1px;
+}
+
+.navbar .active-badge {
+    background: var(--accent-black);
+    color: var(--paper-bg); /* Using off-white for text inside badge */
+    padding: 0.5rem 1.2rem;
+    border-radius: 20px;
+}
+
+.divider {
+    font-size: 1.2rem;
+    font-weight: 800;
+}
+
+/* --- Main Content --- */
+.content {
+    max-width: 85%;
+}
+
+.content h1 {
+    font-size: 4.5rem;
+    font-weight: 900;
+    letter-spacing: -2px;
+    margin-bottom: 1.5rem;
+    text-transform: uppercase;
+    color: var(--paper-text);
+}
+
+.content h3 {
+    font-size: 1.1rem;
+    font-weight: 700;
+    margin-bottom: 1rem;
+    color: var(--paper-text);
+}
+
+.content p {
+    font-size: 0.95rem;
+    line-height: 1.6;
+    margin-bottom: 1rem;
+    color: #333;
+}
+
+.social-link {
+    margin: 1.5rem 0;
+    font-size: 0.85rem;
+    font-weight: 700;
+}
+
+/* --- Signature --- */
+.signature {
+    font-family: 'Qwitcher Grypen', cursive;
+    font-size: 5rem;
+    color: var(--accent-black);
+    transform: rotate(-5deg); 
+    margin: 1rem 0;
+    position: relative;
+    display: inline-block;
+}
+
+.signature::after {
+    content: '';
+    position: absolute;
+    bottom: 15px;
+    left: 0;
+    width: 100%;
+    height: 2px;
+    background: var(--accent-black);
+    transform: rotate(-2deg);
+}
+
+/* --- Buttons --- */
+.action-buttons {
+    display: flex;
+    gap: 1rem;
+    margin-top: 2rem;
+}
+
+.btn {
+    padding: 0.8rem 2rem;
+    border-radius: 30px;
+    font-weight: 700;
+    font-size: 0.85rem;
+    text-decoration: none;
+    text-transform: uppercase;
+    transition: all 0.3s ease;
+}
+
+.btn-dark {
+    background-color: var(--accent-black);
+    color: var(--paper-bg); /* Off-white text */
+    border: 2px solid var(--accent-black);
+}
+
+.btn-light {
+    background-color: transparent;
+    color: var(--accent-black);
+    border: 2px solid var(--accent-black);
+}
+
+.btn-dark:hover {
+    background-color: transparent;
+    color: var(--accent-black);
+}
+
+.btn-light:hover {
+    background-color: var(--accent-black);
+    color: var(--paper-bg);
+}
+
+/* --- Footer & Extras --- */
+.social-footer {
+    margin-top: auto;
+    font-size: 0.85rem;
+    font-style: italic;
+    color: #555;
+}
+
+.pagination-dots {
+    position: absolute;
+    right: 3rem;
+    top: 50%;
+    transform: translateY(-50%);
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+    z-index: 5;
+}
+
+.dot {
+    width: 10px;
+    height: 10px;
+    background-color: rgba(242, 239, 233, 0.4); /* Off-white with opacity */
+    border-radius: 50%;
+    cursor: pointer;
+}
+
+.dot.active {
+    background-color: var(--paper-bg); /* Solid off-white */
+    box-shadow: 0 0 10px rgba(0,0,0,0.5);
+}
+
+/* =========================================
+   Responsive Adjustments & Mobile View 
+   ========================================= */
+
+@media (max-width: 1024px) {
+    .paper-container { width: 85%; }
+    .paper-clip { clip-path: polygon(0 0, 100% 0, 70% 100%, 0 100%); }
+    .content h1 { font-size: 3.5rem; }
+    .watermark { font-size: 10rem; }
+}
+
+@media (max-width: 768px) {
+    body, html {
+        overflow-y: auto; /* Enable scrolling for smaller screens */
+    }
+
+    .hero-wrapper {
+        display: flex;
+        flex-direction: column;
+        height: auto;
+        min-height: 100vh;
+    }
+
+    /* Move image to top half */
+    .character-bg {
+        position: relative;
+        top: 0;
+        right: 0;
+        width: 100%;
+        height: 60vh;
+        z-index: 1;
+    }
+
+    /* Move paper to bottom half and cut the TOP edge diagonally */
+    .paper-container {
+        position: relative;
+        width: 100%;
+        height: auto;
+        min-height: 60vh;
+        margin-top: -15vh; /* Pull the paper up over the image */
+        /* Drop shadow changes direction to cast upwards onto the image */
+        filter: drop-shadow(0px -10px 25px rgba(0, 0, 0, 0.5));
+    }
+
+    .paper-clip {
+        padding: 4rem 2rem 2rem 2rem;
+        /* Diagonal cut from top-left dropping to top-right */
+        clip-path: polygon(0 10%, 100% 0, 100% 100%, 0 100%);
+    }
+
+    .watermark {
+        top: 8%;
+        left: 50%;
+        transform: translateX(-50%);
+        font-size: 6rem;
+        -webkit-text-stroke: 2px rgba(0, 0, 0, 0.08);
+    }
+
+    .navbar {
+        flex-wrap: wrap;
+        justify-content: center;
+        gap: 1rem;
+        margin-bottom: 3rem;
+    }
+
+    .content {
+        margin: 0 auto;
+        text-align: center;
+    }
+
+    .content h1 {
+        font-size: 3rem;
+    }
+
+    .action-buttons {
+        flex-direction: column;
+        align-items: center;
+    }
+
+    .btn {
+        width: 100%;
+        text-align: center;
+    }
+
+    .signature {
+        font-size: 4rem;
+        margin: 2rem 0;
+    }
+
+    .pagination-dots {
+        display: none; /* Hide dots on mobile */
+    }
+
+    .social-footer {
+        margin-top: 3rem;
+        text-align: center;
+    }
 }
