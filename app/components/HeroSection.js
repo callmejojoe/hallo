@@ -27,14 +27,14 @@ export default function HeroSection() {
           loading="eager"
         /></div> 
 
-        <div className="pagination-dots">
+        {/* <div className="pagination-dots">
           <span className="dot active"></span>
           <span className="dot"></span>
           <span className="dot"></span>
           <span className="dot"></span>
           <span className="dot"></span>
           <span className="dot"></span>
-        </div>
+        </div> */}
 
         <div className="paper-container">
           <div className="paper-clip">

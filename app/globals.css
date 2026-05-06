@@ -3,8 +3,8 @@
 /* Base Reset & Typography */
 :root {
     /* Vintage Paper Off-White Palette */
-    --paper-bg: #F2EFE9; /* Warm off-white */
-    --paper-text: #1a1a1a;
+    --paper-bg: #f9f7f0; /* Warm off-white */
+    --paper-text: #0a032e;
     --accent-black: #111;
 }
 /* :root {
@@ -44,7 +44,8 @@ body, html {
     width: 100%;
     height: 100%;
     font-family: 'Montserrat', sans-serif;
-    background-color: #1a1a1a;
+    background-color: var(--foreground);
+    /* background-color: #1a1a1a; */
     /* On desktop we hide scroll, on mobile we will enable it */
     overflow: hidden; 
 }
