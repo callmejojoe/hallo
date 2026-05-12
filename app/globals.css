@@ -44,16 +44,18 @@ body, html {
     width: 100%;
     height: 100%;
     font-family: 'Montserrat', sans-serif;
-    background-color: var(--foreground);
+    background-color: var(--paper-bg);
     /* background-color: #1a1a1a; */
     /* On desktop we hide scroll, on mobile we will enable it */
     overflow: hidden; 
+    overflow-y: auto;
 }
 
 .hero-wrapper {
     position: relative;
     width: 100vw;
-    height: 100vh;
+    min-height: 100vh;
+    height: auto;
 }
 
 /* --- Right Side: Character Image & Parallax --- */
@@ -83,10 +85,12 @@ body, html {
 
 .paper-clip {
     width: 100%;
-    height: 100%;
+    min-height: 100vh;
+    height: auto;
+    /* height: 100%; */
     background-color: var(--paper-bg);
     /* background-image: url('../public/Texture_Paper2.jpg'); */
-    clip-path: polygon(0 0, 100% 0, 50% 100%, 0 100%);
+    clip-path: polygon(0 0, 100% 0, 60% 100%, 0 100%);
     padding: 3rem 4rem;
     display: flex;
     flex-direction: column;
@@ -109,7 +113,7 @@ body, html {
 
 /* --- Navigation --- */
 .navbar {
-    position: sticky;
+    position: relative;
     top: 0;
     display: flex;
     align-items: center;
@@ -117,13 +121,16 @@ body, html {
     font-size: 0.85rem;
     font-weight: 700;
     margin-bottom: 6rem;
-    background-color: var(--paper-bg);
+    /* background-color: transparent; */
 }
 
-.navbar a {
+.navbar .button {
     text-decoration: none;
     color: var(--paper-text);
     letter-spacing: 1px;
+    background-color: var(--paper-bg);
+    border-radius: 30px;
+    padding: 0.2rem;
 }
 
 .navbar .active-badge {
@@ -135,12 +142,20 @@ body, html {
 
 .divider {
     font-size: 1.2rem;
-    font-weight: 800;
+    font-weight: 1200;
+}
+
+.info {
+    font-family: 'Qwitcher Grypen', cursive;
+    font-size: 1rem;
+    margin-left: 0.3rem;
+    font-weight: 600;
+    color: var(--accent-black);
 }
 
 /* --- Main Content --- */
 .content {
-    max-width: 85%;
+    max-width: 70%;
 }
 
 .content h1 {
